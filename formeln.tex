@@ -1,0 +1,125 @@
+\documentclass[a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{graphicx}
+\usepackage{bm}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{MnSymbol}
+\usepackage{units}
+\usepackage{listings}
+
+
+%macros
+%\newcommand{\mod}{\text{ mod }}
+
+
+
+\begin{document}
+\title{Cryptography}
+\section{Primes and Divisibility} 
+    %TODO
+\section{Modular Arithmetic}
+\subsection{Definition}
+\begin{equation}
+    \begin{split}
+	[a \mod N] = [b \mod N] \\
+	\text{is defined as: } a \equiv b \mod N
+    \end{split}
+    \label{modulo_definition}
+\end{equation}
+
+\subsection{properties}
+Congruence modulo $N$ is an equivalent relation i.e.
+\begin{equation}
+    \begin{split}
+	a \equiv a \mod N  \quad \forall  a \text{ (reflexive)} \\
+	a \equiv b \mod N \quad\Rightarrow\quad b \equiv a \mod N \text{ (symmetric)}\\
+	a \equiv b \mod N  \quad\wedge\quad  b \equiv c \mod N \quad\Rightarrow\quad a \equiv c \mod N \text{ (transitive)}
+    \end{split}
+    \label{modulo_equivalent_relation}
+\end{equation}
+Congruence modulo $N$ respects standard rules of arithmetic i.e.
+\begin{equation}
+    \begin{split}
+	\text{if }a \equiv a' \mod N \quad\wedge\quad b \equiv b' \mod N \\
+	\Rightarrow\quad ab \equiv a'b' \mod N \quad\wedge\quad a+b \equiv a'+b' \mod N
+    \end{split}
+    \label{modulo_arithmetic_rules}
+\end{equation}
+
+\textbf{but} does not respect division
+\begin{equation}
+    ab \equiv cb \mod N \nRightarrow a \equiv c \mod N 
+    \label{modulo_arithmetic_division}
+\end{equation}
+
+except if $b$ is invertible i.e. it exists $b^{-1}$ that $bb^{-1} \equiv  1 \mod N$ 
+\begin{equation}
+    \begin{split}
+	ab \equiv cb \mod N \\
+	\Rightarrow abb^{-1} \equiv cbb^{-1} \mod N \\
+	\Rightarrow a \equiv b \mod N
+    \end{split}
+    \label{modulo_arithmetic_multiplication_invertible}
+\end{equation}
+
+\subsubsection{Example}
+It is possible to first reduce and then to add or multiply, instead of add or multiply and then reduce.
+e.g 
+\begin{equation*}
+    \begin{split}
+	[134092348\cdot134938402 \mod 100] \stackrel{slow}{=} [18094207159547896\mod 100] = 96 \\
+	\Leftrightarrow[134092348\cdot134938402 \mod 100] = [134092348 \mod 100]\cdot[134938402 \mod 100] = 48\cdot2 = 96 
+    \end{split}
+\end{equation*}
+But it is not possible to reduce modulo expressions
+\begin{equation*}
+    \begin{split}
+	[15 \cdot 2 = 30] \equiv[3 \cdot 2 = 6] \mod 24 \\
+	15 \nequiv 3 \mod 24
+    \end{split}
+\end{equation*}
+
+\section{Groups}
+\subsection{Definition}
+A group is a set $\mathbb{G}$ with a binary operation $\circ$ with the following conditions
+\begin{equation}
+    \begin{split}
+	\forall g,h \in \mathbb{G}, g \circ h \in \mathbb{G} \text{ (closure)}\\
+	\exists e \in \mathbb{G} \text{ such that } \forall g \in \mathbb{G}, e \circ g = g \circ e = g \text{ (identity)} \\
+	\forall g \in \mathbb{G} \exists h \in \mathbb{G} \text{ such that } g \circ h = e = h \circ g \text{ (inverse)}\\
+	\forall g_1,g_2,g_3 \exists \mathbb{G} (g_1 \circ g_2) \circ g_3 = g_1 \circ (g_2 \circ g_3) \text{ (associativity)}
+    \end{split}
+    \label{group_definition}
+\end{equation}
+If for a Group $\mathbb{G}$ with the operation $\circ$ also the following holds true 
+\begin{equation}
+    \forall g,h \in \mathbb{G}, g \circ h = h \circ g \text{ (commutativity)}
+    \label{group_abelian_defintion}
+\end{equation}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
