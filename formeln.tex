@@ -15,7 +15,7 @@
 %macros
 %\newcommand{\mod}{\text{ mod }}
 
-%ich bindabei
+
 
 \begin{document}
 \title{Cryptography}
@@ -133,6 +133,28 @@ Recursive algorithm example
 \end{equation}
 
 Find inverse: Extended Euclidean Algorithm
+
+\subsection{Elgamal}
+\subsubsection{Parameter}
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{lc}
+	Primzahl: & p\\
+
+	Primitivwurzel: & a modulo p \\
+
+	Private Key: & x $\in$ \{2,\dots,p-2\} \\
+
+	Public Key: & y = $a^x$ mod p \\
+
+	Nachricht: & m $\in$ \{1,\dots,p-1\} \\
+
+	Verschlüsselung:
+
+
+	\end{tabular}
+\end{table}
 
 \section{Hash Function}
 \begin{itemize}
