@@ -20,7 +20,19 @@
 \begin{document}
 \title{Cryptography}
 \section{Primes and Divisibility} 
-    %TODO
+\subsection{Division with Remainder}
+$a$ and $b$ are integers and $b>0$ then there are integers $b,r$ for which $a = qb + r$ with $0 \leq r < b$
+
+\subsection{Greatest Common Divisor}
+$a,b \geq 0$ then $gcd(a,b) = c$ with $c$ being the largest integer that $c|a \wedge c|b$
+\begin{equation}
+	gcd(b,0) = b 
+\end{equation}
+if $p$ is prime then $gcd(a,p) = 1 or p$
+
+if $a,b > 0$ Then integers $X,Y$ exist, such that $Xa+Yb=gcd(a,b)$
+
+
 \section{Modular Arithmetic}
 \subsection{Definition}
 \begin{equation}
@@ -66,6 +78,9 @@ except if $b$ is invertible i.e. it exists $b^{-1}$ that $bb^{-1} \equiv  1 \mod
     \label{modulo_arithmetic_multiplication_invertible}
 \end{equation}
 
+\subsubsection{Invertible Integers}
+Let $a,N$ be integers, with $N > 1$. Then $a$ is invertible $\mod N$ if and only if $gcd(a,N) =1$
+
 \subsubsection{Example}
 It is possible to first reduce and then to add or multiply, instead of add or multiply and then reduce.
 e.g 
@@ -101,8 +116,39 @@ If for a Group $\mathbb{G}$ with the operation $\circ$ also the following holds 
     \label{group_abelian_defintion}
 \end{equation}
 
+\section{Algorithms}
+\subsection{Euclidean Algorithm and Extended Euclidean Algorithm}
+Find gcd(a,b): Euclidean Algorithm
+Recursive algorithm example 
+\begin{equation}
+    \begin{split}
+	a = 1071 \\
+	b = 462 \\
+	1071 = 2 \times 462 +  147 \\
+	462 = 3 \times  147 + 21 \\
+	147 = 7 \times 21 + 0 \\ 
+	\Rightarrow gcd(a,b) = 21
+    \end{split}
+        \label{euclidean_example}
+\end{equation}
+
+Find inverse: Extended Euclidean Algorithm
+
+\section{Hash Function}
+\begin{itemize}
+    \item it is easy to compute the hash value for any given message
+    \item it is infeasible to find a message that has a given hash
+    \item it is infeasible to modify a message without hash being changed
+    \item it is infeasible to find two different messages with the same hash
+\end{itemize}<++>
 
 
+%TODO
+\section{TODO}
+
+\begin{itemize}
+    \item \href{http://en.wikipedia.org/wiki/Modular_exponentiation}{Modular exponentiation}: um schnell exponenten zu berechnen (Fermatsche Primzahlzerlegeung) 
+\end{itemize}<++>
 
 
 
