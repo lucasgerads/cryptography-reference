@@ -115,6 +115,23 @@ If for a Group $\mathbb{G}$ with the operation $\circ$ also the following holds 
     \forall g,h \in \mathbb{G}, g \circ h = h \circ g \text{ (commutativity)}
     \label{group_abelian_defintion}
 \end{equation}
+\section{Number theory}
+\subsection{Definition}
+The set \[\mathbb{Z}_n^* := \{a \in \mathbb{Z}_n | \text{gcd}(a,n) = 1\}\] is called multiplicative group of $\mathbb{Z}_n$ and the function $\varphi(n) = |\mathbb{Z}_n|$ is called Euler-$\varphi$-function.
+\begin{itemize}
+	\item $\varphi(p) = p-1$ for any prime p
+	\item $\mathbb{Z}_n^*$ is a multiplicative abelian group; it holds that $\text{gcd}(a,n) = 1 \leftrightarrow $ There exists an inverse s of a, i.e. $a \cdot s \equiv 1 \text{mod} n$
+	\item notation: $(a,n) := \text{gcd}(a,n)$
+\end{itemize}
+Euler's theorem:
+
+Let $a \in \mathbb{Z}_n^*$
+\[ a^{\varphi(n)} \equiv 1 \text{mod} n  \]
+
+
+Fermat's little theorem:
+
+p is prime and $(a,p) = 1$, then $a^{p-1} \equiv 1 \text{mod}p$
 
 \section{Algorithms}
 \subsection{Euclidean Algorithm and Extended Euclidean Algorithm}
@@ -182,7 +199,7 @@ Then:
 
 \begin{itemize}
     \item \href{http://en.wikipedia.org/wiki/Modular_exponentiation}{Modular exponentiation}: um schnell exponenten zu berechnen (Fermatsche Primzahlzerlegeung) 
-\end{itemize}<++>
+\end{itemize}
 
 
 
