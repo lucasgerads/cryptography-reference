@@ -157,6 +157,24 @@ Definition: if n is odd,composite and it holds that $a^{n-1} \equiv 1 \text{ mod
 
 Definition: if n is pseudoprime to base a for all a with gcd(a,n) =1, n is called \textbf{Carmichael number}.
 
+\subsection{Miller-Rabin Primitive Test (MRPT)}
+
+For a odd natural number \textit{n}:
+
+\[ s = max\{r \in \mathbb{N}: 2^r \text{ divides } n-1\} \]
+
+So $2^s$ is the highest power of 2 that divides $n-1$. Set $d=\frac{(n-1)}{2^s}$ with d as odd number.
+
+Theorem: If n is prime and gcd(a,n) = 1 it holds either that
+
+\[ a^d \equiv 1 \text{ mod } n \]
+
+or there is one r in \{ 0,1,\dots,s-1 \} with
+\[ a^{2^r d} \equiv -1 \text{ mod } n \]
+
+The order of multiplicative groups of integers modulo n is $n-1=2^sd$ if n is prime. The order k of the residue class $a^d + n\mathbb{Z}$ is a power of 2. Hence it holds for $k = 1 = 2^0$:
+\[ a^d \equiv 1 \text{ mod } n \]
+
 \section{Algorithms}
 \subsection{Euclidean Algorithm and Extended Euclidean Algorithm}
 Find gcd(a,b): Euclidean Algorithm
