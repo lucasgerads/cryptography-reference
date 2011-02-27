@@ -123,15 +123,39 @@ The set \[\mathbb{Z}_n^* := \{a \in \mathbb{Z}_n | \text{gcd}(a,n) = 1\}\] is ca
 	\item $\mathbb{Z}_n^*$ is a multiplicative abelian group; it holds that $\text{gcd}(a,n) = 1 \leftrightarrow $ There exists an inverse s of a, i.e. $a \cdot s \equiv 1 \text{mod} n$
 	\item notation: $(a,n) := \text{gcd}(a,n)$
 \end{itemize}
-Euler's theorem:
+
+\textbf{Euler's theorem:}
 
 Let $a \in \mathbb{Z}_n^*$
 \[ a^{\varphi(n)} \equiv 1 \text{mod} n  \]
 
 
-Fermat's little theorem:
+\textbf{Fermat's little theorem:}
 
 p is prime and $(a,p) = 1$, then $a^{p-1} \equiv 1 \text{mod}p$
+
+\subsection{Fermat Primality Test (FPT)}
+
+Select $a \in {2,\dots,n-1}$ at random and decide:
+
+\[ \begin{cases} n \text{ is prime, if } a^{n-1} \equiv 1 \text{ mod } n \\ n \text{ is composite, otherwise} \end{cases} \]
+
+The FPT is not suitable as a factorization test, because it just shows if n owns the property of being composite or not. 
+
+Example for $n = 341 = 11 \cdot 31$ :
+
+\[ \textbf{2}^340 \equiv 1 \text{ mod } 341 \]
+
+even if n is composite. But:
+\[ \textbf{3}^340 \equiv 56 \text{ mod } 341 \]
+
+\subsection{Carmichael Numbers}
+
+The FPT can show if a number n is composite, but not if it is prime. But if the FTP shows that n is not composite for a lot of bases a, it is properly prime.
+
+Definition: if n is odd,composite and it holds that $a^{n-1} \equiv 1 \text{ mod } n$, n is called \textbf{pseudoprime} to base a.
+
+Definition: if n is pseudoprime to base a for all a with gcd(a,n) =1, n is called \textbf{Carmichael number}.
 
 \section{Algorithms}
 \subsection{Euclidean Algorithm and Extended Euclidean Algorithm}
