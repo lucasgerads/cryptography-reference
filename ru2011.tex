@@ -1,0 +1,458 @@
+\documentclass[a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{graphicx}
+\usepackage{bm}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{MnSymbol}
+\usepackage{units}
+\usepackage{listings}
+
+
+%macros
+%\newcommand{\mod}{\text{ mod }}
+
+
+
+\begin{document}
+\title{RU2011}
+\section{A1} 
+
+a) q=1 ($k_2=0$ always)
+
+%learn the chain-rules!
+alternative 1)
+
+H(M|C)) = H(M,C)-H(C)
+
+=H(M,C,$K_1$)-H($K_1$|M,C) - H(C)
+
+=H(M,C,$K_1$) - H(C)
+
+=H(M,C,$K_1$)-H(M|$K_1$,C)-H(C)
+
+alternative 2)
+
+H(M|C) = = H($K_1 \oplus $C |C) = H($K_1$|C)
+
+b) Derive the distribution of $K_1 \oplus K_2$
+
+\begin{table}[h]
+	\begin{tabular}{c|c|c}
+$K_1$ & $K_2$ & $K_1 \oplus K_2$ \\
+\hline
+0 & 0 & 0 \\
+0 & 1 & 1 \\
+1 & 0 & 1 \\
+1 & 1 & 0 
+	\end{tabular}
+\end{table}
+
+$P(K_1 \oplus K_2 = 0) = pq + (1-p)(1-q) = 1-p-q+2pq$
+
+
+c) $K = K_1 \oplus K_2$
+
+Theorem 4.13 System perfect secure $\leftrightarrow P(K=K_l=\frac{1}{\mathbb{K}j} \leftrightarrow P(K=0) = \frac{1}{2}$
+
+$1-p-q+2pq = \frac{1}{2}$
+
+$\frac{1}{2} - p = q (1-2p)$
+
+$\frac{(1-2p)\frac{1}{2}}{(1-2p)} = q$
+
+$\rightarrow q = \frac{1}{2}$
+
+d) (see Sec.2.6)
+
+$e(M,K) = C = (M_1 \oplus M_2, M_2 \oplus K)$
+
+$d(C,K)=M=(M_2\oplus C_1, K \oplus C_2)$
+
+$= (K \oplus C_2 \oplus C_1,K \oplus C_2)$
+
+$d(e(M,K)) = M \forall M,K \in \{0,1\}\ast \{0,1\}\ast \{0,1\}$
+
+e) $H(M_1|C_1),H(M_2|C_2)$
+
+$H(M_1|C_1)=-\displaystyle \sum\limits_{(m_1,c_1)\in \{0,1\}^2} P(m_1,c_1) log_2 P(m_1|c_1)$
+
+\begin{table}
+	\centering
+	\begin{tabular}{c|cc}
+		$P(M_1,C_1)$ & $C_1 = 0$ & $=1$ \\
+
+		\hline
+
+		$M_1 = 0$ & $\frac{1}{4}$ & $\frac{1}{4}$ \\
+
+		$M_1 = 1$ & $\frac{1}{4}$ & $\frac{1}{4}$ \\
+
+	\end{tabular}
+\end{table}
+
+$H(M_1|C_1)=-4 \frac{1}{4} log_2 \frac{1}{2} =4 \frac{1}{4} log_2 2 = 1$
+
+$H(M_2|C_2)=1$(s.o.)
+
+
+f) calculate $H(\hat M|\hat C)$
+
+$=H(\hat M,\hat C)-H(\hat C)$
+
+$=H(\hat M,K) - H(\hat C)$
+
+$=H(M_1)+H(M_2)+H(K)-H(C)$
+
+$=1+1+1-2=1$
+
+perfect secrecy $\leftrightarrow H(M|C) = H(M)$
+
+$H(M) = H(M_1) +H(M_2) = 2$
+
+$\rightarrow$ no!
+
+%wichtig für Klausur!
+
+
+
+\section{A2} 
+
+p=107 a =2 $x_a=66$ $x_B = 33$
+
+a) shared key is $a^{x_Ax_B}$
+
+$x_Ax_B=66\cdot 33 = 58 \mod (p-1)$
+
+calculate $2^{58} \mod p$
+
+SQM:
+
+$\rightarrow 2^{58} = 75 \mod 107$
+
+b) 103 primitive element
+
+$\leftrightarrow 103^{\frac{p-2}{p_i}}\neq 1 \mod \forall i$
+
+$106 =53 \cdot 2$
+
+$103^2 \equiv 16 \nequiv 1 \mod 107$
+
+$103^{53} = (-4)^{53} = (-2)^{106} = -1 \equiv 106 \nequiv 1 \mod 107$
+
+c)
+
+$103^{58} \equiv (-4)^{58} \equiv 4^{58} \equiv 2^{116} \equiv 2^{10} \equiv 2^7 2^3 \equiv 21\cdot8 \equiv 168 \equiv 61 \mod 107$
+
+\section{A3} 
+
+Public Key (e,n) = (7,$11\cdot13$)
+
+a) Bob's private key : $d=e^{-1} \mod \varphi(n),\varphi(n)=120$
+
+$d\cdot e \equiv 1 \mod \varphi(n)$
+
+$d7+k120=1$
+
+$-17\cdot 7 + 120 = 1 \rightarrow d= -17 \equiv 103 \mod 120$
+
+b) $c_2 = m_1^e \mod n = 110^7 \mod 143 = 33 \mod 143 $
+solve by SQM
+
+c)$c_2 = 10$ $ m_2=c_2^d \mod n$
+
+$\rightarrow m_2=10^{103} \mod 143$
+
+$=10 \mod 143$
+
+Solve 103 by SQM
+
+c) public key: (e',n') = (9,253)
+
+private key: d' = 49
+
+Eve knows (e',n'),d'
+
+d) $d'\equiv e'^{-1} \mod \varphi(n')$
+
+$\rightarrow e'\cdot d' \equiv 1 \mod \varphi(n')$
+
+$\rightarrow e'\cdot d' -1 \equiv 0 \mod \varphi(n')$
+
+$\rightarrow 9\cdot49 -1 \equiv 440 \mod \varphi(n')$
+
+$440=220\cdot2=2^3 \cdot 5 \cdot 11$
+
+f) $440 = k \varphi(n) = k(p-1)(q-1), p \neq q;$p,q prime
+
+$=2\cdot(11-1)(23-1)$
+
+
+
+\section{A4} 
+
+m=77
+p=97
+a=5
+
+a) 
+a must be a primitve element mod p %help sheet
+
+$p-1 = \displaystyle \prod_{i=1}^k p_i^{t_i} \rightarrow 97-1 = 96 = 2^5 \cdot 3$
+
+$\leftrightarrow a^{\frac{p-1}{p_i}}\mod p  \nequiv 1 \mod p$
+
+$\rightarrow 5^{96/2} = 5^{48} \mod 97 \nequiv 1$
+
+$5^{96/3} = 5^{32} \mod 97 \nequiv 1$
+
+$\rightarrow$ a is a primitive element mod p
+
+b) Elgamal signature without hashed message
+
+$r=a^k \mod p = 5^7 \mod 97 \equiv 78125 \mod 97 \equiv 40$
+
+$K^{-1} \mod (p-1) \equiv 7^{-1} \mod 96 \equiv -41 \equiv 55 \mod 96$
+
+Extended Euclidean Algorithm:
+
+$96 = 7*13+5$
+
+$7=5*1 +2 $
+
+$5 = 2*2 +1 $
+
+$ 1= 5-2*2$
+
+$1=5-2(7-5)=5*3-2*7$
+
+$s=k^{-1}(m-x_A r) \mod (p-1) = 55 (77-8*40) \mod 96 = 75$
+
+check verification:
+
+$v_1 \equiv y_a^r r^s \mod p = v_2 = a^m \mod p$
+
+$\rightarrow y_1 = a^{x_A}\mod p,r=a^k \mod p, s=-rv^{-1}\mod (p-1)$
+
+$v_1 = a^{x_1*r}a^{(u+x_av)(-rv^{-1})}\mod p$
+
+$\equiv a^{x_ar-urv^{-1}-x_ar}\mod p$
+
+$\equiv a^{-urv^{-1}}\mod p$
+
+$v_1 \equiv v_2$
+
+d) It is impossible to find: $m=h^{-1}(-ruv^{-1})$ because a hashfunction is preimage-resistant by definition
+
+e)
+
+$s=x_A^{-1}(m-kr) \mod (p-1)$
+
+verification:
+
+$a^m \equiv y_A^s \cdot r^e$
+
+$\equiv (a^{x_a})^{s} \cdot r^r \equiv a^{x_as}r^r$
+
+$a^{x_ax_a^{-1}(m-kr)}r^r$
+
+$a^{m-kr}a^{kr}\equiv a^m$
+
+f) signature: $s= x_a^{-1}(m+kr) \mod (p-1)$
+
+$a^s \equiv y_a^m r^r \mod p$
+
+$a^{x_am+kr} \equiv a^{x_am}a^{kr}$
+
+g) $s=x_ar+km \mod p-1$
+$a^s = \dots = y_a^r r^m \mod p$
+
+
+
+
+\section{A5} 
+
+Lamport protocol/ CR'-auth
+a) Security is based on the preimage resistancy of hash-functions
+
+Description: A chooses PW $w$ and calculates $H^t(w) =w_0$
+
+$A\rightarrow B$:$w_0$
+
+In each session i: $w_i = H^{t-i}(w)$
+
+$A\rightarrow B$:$w_i$, B verifies $w_{i-1}=H(w_i)$
+
+b) O can intercept A's message as in man-in-the-middle-attack and he can forward the password to B.
+Then B believes that O is A.
+
+c) $A\leftarrow B$: $r_B$
+
+$A\rightarrow B$: $cert_A,r_A, B, S_A(r_A,r_B,B)$
+
+$A \leftarrow B$: $cert_B,A,S_B(r_B,r_A,A)$
+
+d) h(m) = 12 p=137 q=17 a=3 y=136
+
+DSA:$y=a^x\mod p \rightarrow 136 \equiv 3^x \mod 137$
+
+here: $p-1 \equiv a^x \mod p$
+
+$\rightarrow -1 \equiv a^x \mod p$
+
+We know by Euler's criterium that $a^{\frac{p-1}{2}}\mod p = +- 1 \mod p,p>2$
+
+$\rightarrow x=\frac{p-1}{2}=\frac{136}{2} = 68$
+
+k=3
+
+$r= (a^k \mod p ) \mod q$
+
+$\equiv 3^3 \mod 137 \mod 17$
+
+$\equiv 27 \mod 17$
+
+$\equiv 10 \mod 17$
+
+$K^{-1} \mod q \equiv 3^{-1} \equiv 6 $
+
+Extended Euclidean Algorithm:
+
+$17=3\cdot 5 +2$
+
+$3=2\cdot 1 +1$
+
+$1=3-2\cdot 1$
+
+$=3-(17-3\cdot 5)$
+
+$=3\cdot 6 - 17\cdot 1$
+
+$s=K^{-1}(h(m)-xr)\mod q$
+
+$=6(12+68\cdot 10) \mod 17$
+
+$\equiv 4$
+
+\section{A6} 
+Elliptic Curves and appl. to cryptography
+
+E: $y^2=x^3+2$,over $\mathbb{F}_5$
+\begin{table}[h]
+	\centering
+	\begin{tabular}{ccc|c}
+	$a$ & $a^2$ & $a^3$ & $2+a^3$ \\
+	\hline
+	0 & 0& 0&2\\
+	1&1&1&3\\
+	2&4&3&0\\
+	3&4&2&4\\
+	4&1&4&1
+	
+	\end{tabular}
+\end{table}
+
+$\rightarrow y^2 \in \{0,1,4\}:A$
+
+$\rightarrow 2+x^2 \in \{0,1,2,3,4\}:B$
+
+$C:= A \text{ AND } B = \{0,1,4\}$
+
+
+
+$y^2 = 0 \leftrightarrow y=0$
+
+$2+x^2 = 0 \leftrightarrow x=2 \rightarrow (2,0) \in E(\mathbb{F}_5)$
+
+$y^2 = 1 \leftrightarrow y \in \{1,4\}$
+
+$2+x^2=1 \leftrightarrow x=4 \rightarrow (4,1),(4,4)\in E(\mathbb{F}_5)$
+
+$y^2=4 \leftrightarrow y = \{2,3\}$
+
+$2+x^2 = 4 \leftrightarrow x=3 \leftrightarrow (3,2),(3,3) \in E(\mathbb{F}_5)$
+
+$\#E(\mathbb{F}_5)=6$
+
+$E(\mathbb{F}_5)=\{(2,0),(4,1),(4,4),(3,2),(3,3),0\}$
+
+b)
+
+$-(2,0)=(2,0)$
+
+$-(4,1)=(4,4)$
+
+$-(4,4)=(4,1)$
+
+$-(3,2)=(3,3)$
+
+$-(3,3)=(3,2)$
+
+$-\mathcal{O}=\mathcal{O}$
+
+
+c)
+Elgamal Signature Scheme on ell. curves
+
+1) A chooses random integer k: $1\leq k < n,$ gcd(k,n)=1
+
+A computes $R=kP=(r_x,r_y)$
+
+2) $s=-k(m-x_AR)$
+
+3)$A\rightarrow B$: (M,R,S)
+
+Verification:
+
+1) $V_1 = x_A k_i P + SR,V_2=mP$
+
+2) $V_1 = V_2$
+
+sign m=1 with K=2,$P\leq (4,1),y_A=(3,3)$
+
+1) $R=kP=2(4,1)=(r_x,r_y)$
+
+$=(3,3)$
+
+$y_A=x_AP=(3,3)\rightarrow x_A=2$
+
+$2(4,1) \rightarrow x=\left(\frac{3\cdot 4^2+0}{2\cdot1}\right)^2-2\cdot4=(48\cdot3)^2-8\equiv3\mod 5$
+
+$s=-k(M-x_AR)$
+
+$=-2( (4,1) - 2\cdot(3,3))$
+
+$\left[ = - \left[ 2(4,1)+4(4,1) \right] = -6 (4,1) \right]$ DER SUPER TIP!!!
+
+$=-2( (4,1) - 2 (3,2))$
+
+$=-2( (2,0)) = (2,0) + (2,0) = \mathcal{O}$
+
+$\rightarrow (M,R,S) = ( (4,1),(3,3),\mathcal{O})$
+
+
+d)
+Is (2,0) a generator for $\mathbb{F}_5$?
+
+$2\cdot(2,0)=\mathcal{O}$%neutral element
+
+$3\cdot(2,0)=(2,0)$
+
+$\rightarrow (2,0)$ is not a generator of $\mathbb{F}_5$
+
+
+Groups:
+
+$(G,+) g \in G,|g|,|G|,<g>$
+
+1)$|g| \textbf{|} |G|$
+
+2)$|G|g=0$
+
+3)$\mathcal{O},-g \in <g>$
+
+
+\end{document}
