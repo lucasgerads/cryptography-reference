@@ -205,28 +205,28 @@ Calculate $47 \cdot 1946 = 91462$ and divide $91462/4662 = 19.61\dots$
 Then:
 \[ -91462 + 20 \cdot 4662 = 1778 \]
 \[2291 \cdot (1778 + 4012) = 2291 \cdot 5790 = 2291 \cdot 1128 = 2584248 = 1500 \text{ mod } 4662\]
-\subsection{Elgamal}
-\subsubsection{Parameter}
-
-\begin{table}[h]
-	\centering
-	\begin{tabular}{lc}
-	Primzahl: & p\\
-
-	Primitivwurzel: & a modulo p \\
-
-	Private Key: & x $\in$ \{2,\dots,p-2\} \\
-
-	Public Key: & y = $a^x$ mod p \\
-
-	Nachricht: & m $\in$ \{1,\dots,p-1\} \\
-
-	Verschlüsselung:
-
-
-	\end{tabular}
-\end{table}
-
+%\subsection{Elgamal}
+%\subsubsection{Parameter}
+%
+%\begin{table}[h]
+	%\centering
+	%\begin{tabular}{lc}
+	%Primzahl: & p\\
+%
+	%Primitivwurzel: & a modulo p \\
+%
+	%Private Key: & x $\in$ \{2,\dots,p-2\} \\
+%
+	%Public Key: & y = $a^x$ mod p \\
+%
+	%Nachricht: & m $\in$ \{1,\dots,p-1\} \\
+%
+	%Verschlüsselung:
+%
+%
+	%\end{tabular}
+%\end{table}
+%
 \section{Hash Function}
 \begin{itemize}
     \item it is easy to compute the hash value for any given message
@@ -234,6 +234,123 @@ Then:
     \item it is infeasible to modify a message without hash being changed
     \item it is infeasible to find two different messages with the same hash
 \end{itemize}
+
+\section{Block-Cipher-Modes}
+
+\subsection{Electronic Code Book Mode}
+
+\begin{figure}[!ht]
+	\begin{center}
+		\includegraphics[width=0.5\linewidth]{images/Ecb_encryption.png}
+	\end{center}
+	\caption{ECB Encryption}
+	\label{fig:ecb_en}
+\end{figure}
+\begin{figure}[!ht]
+	\begin{center}
+		\includegraphics[width=0.5\linewidth]{images/Ecb_decryption.png}
+	\end{center}
+	\caption{ECB Decryption}
+	\label{fig:ecb_de}
+\end{figure}
+
+\subsection{Cipher Block Chaining Mode}
+
+\begin{figure}[!ht]
+	\begin{center}
+		\includegraphics[width=0.5\linewidth]{images/Cbc_encryption.png}
+	\end{center}
+	\caption{CBC Encryption}
+	\label{fig:cbc_en}
+\end{figure}
+\begin{figure}[!ht]
+	\begin{center}
+		\includegraphics[width=0.5\linewidth]{images/Cbc_decryption.png}
+	\end{center}
+	\caption{CBC decryption}
+	\label{fig:cbc_de}
+\end{figure}
+
+\subsection{Cipher Feedback Mode}
+
+\begin{figure}[!ht]
+	\begin{center}
+		\includegraphics[width=0.5\linewidth]{images/Cfb_encryption.png}
+	\end{center}
+	\caption{CFB Encryption}
+	\label{fig:cfb_en}
+\end{figure}
+\begin{figure}[!ht]
+	\begin{center}
+		\includegraphics[width=0.5\linewidth]{images/Cfb_decryption.png}
+	\end{center}
+	\caption{CFB decryption}
+	\label{fig:cfb_de}
+\end{figure}
+
+\subsection{Output Feedback Mode}
+
+\begin{figure}[!ht]
+	\begin{center}
+		\includegraphics[width=0.5\linewidth]{images/Ofb_encryption.png}
+	\end{center}
+	\caption{OFB Encryption}
+	\label{fig:ofb_en}
+\end{figure}
+\begin{figure}[!ht]
+	\begin{center}
+		\includegraphics[width=0.5\linewidth]{images/Ofb_decryption.png}
+	\end{center}
+	\caption{OFB decryption}
+	\label{fig:ofb_de}
+\end{figure}
+
+\subsection{Counter Mode}
+
+\begin{figure}[!ht]
+	\begin{center}
+		\includegraphics[width=0.5\linewidth]{images/Ctr_encryption.png}
+	\end{center}
+	\caption{CTR Encryption}
+	\label{fig:ctr_en}
+\end{figure}
+\begin{figure}[!ht]
+	\begin{center}
+		\includegraphics[width=0.5\linewidth]{images/Ctr_decryption.png}
+	\end{center}
+	\caption{CTR decryption}
+	\label{fig:ctr_de}
+\end{figure}
+
+\section{learn by heart}
+Given: Alphabet with 26 letters $\mathbb{Z}^{n \times n}_26$
+
+Wanted: Number of invertible matrices
+
+
+Composite $26 = 2 \cdot 13$
+
+
+Number of invertible matrices mod 2:
+
+
+\[2^{n^2} (1 - \frac{1}{2}) (1- \frac{1}{2^2})\dots(1-\frac{1}{2^n})\]
+
+
+Number of invertible matrices mod 13:
+
+
+\[13^{n^2} (1 - \frac{1}{13}) (1- \frac{1}{13^2})\dots(1-\frac{2}{13^n})\]
+
+
+Number of invertible matrices mod 26 is the product of those two numbers:
+
+
+\[26^{n^2} (1 - \frac{1}{2}) (1- \frac{1}{2^2})\dots(1-\frac{1}{2^n})(1 - \frac{1}{13}) (1- \frac{1}{13^2})\dots(1-\frac{2}{13^n})\]
+
+Group order \#$E(\mathbb{F}_q)$:
+
+\[\text{\#}E(\mathbb{F}_q) = q + 1 -t, t \in \mathbb{Z} \text{ and } |t| \leq q \]
 
 \section{Glossary}
 \begin{itemize}
@@ -244,8 +361,9 @@ Then:
 %TODO
 \section{TODO}
 Kettenregel
-Formel für #E($\mathbb{F}_5$)
-Auswendiglernen von Blockciphern
+
+
+Münzwurf
 
 
 \begin{itemize}
